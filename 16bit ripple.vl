@@ -1,0 +1,17 @@
+module adder4(A,B,C,Co,Ci)
+input[3:0]A,B;
+output[3:0]C;
+output Co;
+input Cin;
+assign{C,Co}=A+B+Ci;
+endmodule
+module adder_16(X,Y,Z,carry)
+input[3:0]A,B;
+output[3:0]C;
+output carry;
+wire c[3:1];
+adder4 a0(x[3:0],y[3:0],z[3:0],c[0],1'b0);
+adder4 a1(x[7:4],y[7:4],z[7:4],c[1],c[0]);
+adder4 a2(x[11:8],y[11:8],z[11:8],c[2],c[1]);
+adder4 a3(x[15:12],y[15:12],z[15:12],carry,c[2]);
+endmodule
